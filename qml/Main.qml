@@ -18,7 +18,6 @@ import QtQuick 2.7
 import Ubuntu.Components 1.3
 //import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
-import Qt.labs.settings 1.0
 
 MainView {
     id: root
@@ -35,12 +34,8 @@ MainView {
         Page {
                 id: page1
         	header: PageHeader {
-        	    title: 'qmldatefrom'
+        	    title: 'qmlfortune'
         	}
-            Settings {
-    	id: "settings"
-    	property string data: "2022-12-25"
-    }
     Image {
     	    id: background
             source: "../assets/Background.jpg"
@@ -59,26 +54,26 @@ MainView {
 
 	      Text{
 	      	 id: cookie
-        	 width: 175
-        	 wrapMode: Text.WordWrap
-        	 elide: Text.ElideLeft
 	      }
 
 	    Button {
        	    	Layout.fillWidth: true
-            	text: i18n.tr('Calculate');
+            	text: 'Get Cookie';
             	onClicked: {
         var xmlhttp = new XMLHttpRequest();
         var url = "https://api.justyy.workers.dev/api/fortune";
 
         xmlhttp.onreadystatechange=function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var data=xmlhttp.responseText
-		cookie.text=data;
+                var data=xmlhttp.responseText.split('\\t')
+                data=data.join('	');
+                data=data.split('\\n');
+                data=data.join('\r\n');
+                cookie.text=data;
+		
             }
         }
         xmlhttp.open("GET", url, true);
-        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8')
         xmlhttp.send();
     }
 
@@ -94,7 +89,7 @@ MainView {
     Page {
 	    id: page2
             header: PageHeader {
-        	    title: i18n.tr('Informations')
+        	    title: 'Informations'
         }
     Image {
             source: "../assets/Background.jpg"
@@ -112,28 +107,28 @@ MainView {
       	   height: page2.contentHeight   	   
 
     	  Label {
-    	  	text: qsTr('© 2023 Giulio Sorrentino')
+    	  	text: '© 2022 Giulio Sorrentino'
     	  	color: 'white'
        	    	Layout.fillWidth: true
 
     	  }
     	  Label {
-    	  	text: qsTr('Sotto licenza GPL v3 o, secondo la tua opinione, qualsiasi\nversione successiva.')
+    	  	text: 'Sotto licenza GPL v3 o, secondo la tua opinione, qualsiasi\nversione successiva.'
     	  	color: 'white'
        	    	Layout.fillWidth: true
 	  }
 	  Label {
-	  	text: qsTr('Dedicato alle mie tre dame')
+	  	text: 'Dedicato alle mie tre dame'
 	  	color: 'white'
        	    	Layout.fillWidth: true
 	  }	  
 	  Label {
-	  	text: qsTr('Pagina del progetto: https://github.com/numerunix/qmlfortune')
+	  	text: 'Pagina del progetto: https://github.com/numerunix/qmlfortune'
 	  	color: 'white'
        	    	Layout.fillWidth: true
 	  }
     	  
-   }	
+   	}	
       }
    }
 }
