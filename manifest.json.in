@@ -1,0 +1,15 @@
+{
+    "name": "qmlfortune.numerone",
+    "description": "A fortune app in QML",
+    "architecture": "@CLICK_ARCH@",
+    "title": "QMLFortune",
+    "hooks": {
+        "qmlfortune": {
+            "apparmor": "qmlfortune.apparmor",
+            "desktop":  "qmlfortune.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Giulio Sorrentino <gsorre84@gmail.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
