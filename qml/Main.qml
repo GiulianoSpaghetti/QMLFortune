@@ -112,7 +112,7 @@ MainView {
       	   height: page2.contentHeight   	   
 
     	  Label {
-    	  	text: qsTr('© 2022 Giulio Sorrentino')
+    	  	text: qsTr('© 2023 Giulio Sorrentino')
     	  	color: 'white'
        	    	Layout.fillWidth: true
 
