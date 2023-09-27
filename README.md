@@ -1,6 +1,6 @@
 # QMLFortune
 
-A fortune app in QML
+A fortune teller in QML
 
 ## License
 
